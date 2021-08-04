@@ -5,10 +5,9 @@ import { Card,CardTitle, CardText } from 'reactstrap';
 
 export default () => {
 
-    const [fName, setfName] = useState('');
-    const [acao, setAcao] = useState(''); 
-    const [desc, setDesc] = useState('');  
-
+  const [fName, setfName] = useState('');
+  const [acao, setAcao] = useState(''); 
+  const [desc, setDesc] = useState('');  
   
   const submitValue = () => {    
     axios.post('https://bkstk.herokuapp.com/fac', 
@@ -17,9 +16,9 @@ export default () => {
         console.log(response.data)
         setAcao(response.data);
         setDesc(response.data.infoC)
-    });     
+    }).catch(err => {console.log(err)});
+  ;     
   }
-  
  
 
   return(
