@@ -4,7 +4,7 @@ import  '../App.css';
 
 const Footer= (props) => {
   return (
-    <div className="footer-app" >
+    <div  >
       <Jumbotron  fluid>
         <Container fluid>
           <h1 >Ian Guedes Developer</h1>

@@ -8,18 +8,15 @@ import './App.css'
 
 function App() {
   return ( 
+    
+      <div className="div-box">
+      <div ><Footer /></div> 
+      <div ><img src={img}></img></div>
+      <div ><Fomr/></div>      
       
-
-    <div className="div-box"> 
-
-    
-    <img src={img}></img>    
-    <Fomr/>    
-    <Footer />
-    </div>
-    
-   
+      </div>   
   );
 }
 
 export default App;
+
