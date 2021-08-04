@@ -2,25 +2,42 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { Card,CardTitle, CardText } from 'reactstrap';
 
-
 export default () => {
-
-  const [fName, setfName] = useState('');
-  const [acao, setAcao] = useState(''); 
-  const [desc, setDesc] = useState('');  
   
-  const submitValue = () => {    
+  const [fName, setfName] = useState('');
+  const [acao, setAcao] = useState('');
+  const [desc, setDesc] = useState(''); 
+  const [cname, setCname] = useState('');
+  const [ceo, setCeo] = useState('');  
+  const [cro, setCro] = useState(''); 
+
+
+  const submitValue = () => {  
+
+    setAcao(''); 
+    setDesc('');
+    setCname('');
+    setCeo(''); 
+    setCro('');
+
     axios.post('https://bkstk.herokuapp.com/fac', 
     {acao: fName })
-      .then((response) => {
-        console.log(response.data)
-        setAcao(response.data);
-        setDesc(response.data.infoC)
-    }).catch(err => {console.log(err)});
-  ;     
+      .then((response) => {         
+      if(response.data.message){
+        setCro(response.data.message); 
+      }  
+      
+      if(response.data.priceC){
+        setAcao(response.data.priceC); 
+        setDesc(response.data.infoC.description);
+        setCname(response.data.infoC.companyName);
+        setCeo(response.data.infoC.ceo);         
+      } 
+    }).catch(err => err);
+       
   }
  
-
+  
   return(
     <>
     <hr/>
@@ -28,15 +45,16 @@ export default () => {
     <button onClick={submitValue}>Submit</button>
     <br/>
     
-    <Card style={{width:600}} body outline color="secondary">
+    <Card >
         
-        <CardText>{acao.message}</CardText>
-        <CardText>{desc.symbol}</CardText>
-        <CardTitle tag="h5">{acao.companyName}</CardTitle>
-        <CardText>{acao.priceC}</CardText>
-        <CardText>{desc.companyName}</CardText>
-        <CardText>{desc.description}</CardText>
-        <CardText>{desc.CEO}</CardText>
+             
+        <CardTitle tag="h5">{cname}</CardTitle>
+        <CardText>{ceo}</CardText>
+        <CardText>{desc}</CardText>  
+        <CardText>{acao}</CardText>
+        <CardText>{cro}</CardText>         
+
+      
     </Card>    
    
 
