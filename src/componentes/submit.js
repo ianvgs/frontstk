@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Card,CardTitle, CardText } from 'reactstrap';
 
@@ -7,28 +7,33 @@ export default () => {
 
     const [fName, setfName] = useState('');
     const [acao, setAcao] = useState(''); 
-    const [desc, setDesc] = useState('');   
+    const [desc, setDesc] = useState('');  
 
-const submitValue = () => {    
-    axios.post('https://bkstk.herokuapp.com/fac', 
-    {acao: fName })
-      .then((response) => {
-        console.log(response.data)
-        setAcao(response.data);
-        setDesc(response.data.infoC)
-    });     
-}
+  
+  
 
+    useEffect(() => {    
+      axios.post('https://bkstk.herokuapp.com/fac', 
+      {acao: fName})
+        .then((response) => {
+          console.log(response.data)
+          setAcao(response.data);
+          setDesc(response.data.infoC)
+        });
+    }, [fName]);
 
-return(
+   
+   
+
+  return(
     <>
     <hr/>
     <input type="text" placeholder="Name" onChange={e => setfName(e.target.value)} />    
-    <button onClick={submitValue}>Submit</button>
+    <button onClick={useEffect}>Submit</button>
     <br/>
 
     {(acao && 
-     <Card style={{width:600}} body outline color="secondary">
+    <Card style={{width:600}} body outline color="secondary">
         
         <CardText>{acao.message}</CardText>
         <CardText>{desc.symbol}</CardText>
@@ -44,12 +49,17 @@ return(
   )
 }
 
+
+
 /*
-useEffect(() => {    
-    axios.post('http://localhost:3333/fac', 
-    {acao: search })
+
+  const submitValue = () => {    
+    axios.post('https://bkstk.herokuapp.com/fac', 
+    {acao: fName })
       .then((response) => {
         console.log(response.data)
         setAcao(response.data);
-      });
-  }, [search]);*/
+        setDesc(response.data.infoC)
+    });     
+}
+*/
