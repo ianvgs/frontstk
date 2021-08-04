@@ -10,7 +10,7 @@ export default () => {
     const [desc, setDesc] = useState('');   
 
 const submitValue = () => {    
-    axios.post('http://localhost:3333/fac', 
+    axios.post('https://bkstk.herokuapp.com/fac', 
     {acao: fName })
       .then((response) => {
         console.log(response.data)
