@@ -4,11 +4,11 @@ import  '../App.css';
 
 const Footer= (props) => {
   return (
-    <div>
-      <Jumbotron className="footer-app" fluid>
+    <div className="footer-app" >
+      <Jumbotron  fluid>
         <Container fluid>
-          <h1 className="display-3">Ian Guedes Developer</h1>
-          <p className="lead">Tecnologias do Projeto: React, bootstrap, Node.js, Express, Axios, Consign e outros.</p>
+          <h1 >Ian Guedes Developer</h1>
+          <p>Tecnologias do Projeto: React, bootstrap, Node.js, Express, Axios, Consign e outros.</p>
         </Container>
       </Jumbotron>
     </div>

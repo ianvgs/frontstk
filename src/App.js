@@ -2,20 +2,23 @@ import Footer from './componentes/footer'
 import Fomr from './componentes/submit'
 import img from './imagens/Frame 1.png'
 import './App.css'
-import Usuario from './componentes/formu'
+
+
 
 
 function App() {
-  return (
-    <>
-    <Fomr/>
-    <Footer/>
+  return ( 
+      
+
+    <div className="div-box"> 
 
     
-
-
-     
-    </>
+    <img src={img}></img>    
+    <Fomr/>    
+    <Footer />
+    </div>
+    
+   
   );
 }
 

@@ -1,7 +1,32 @@
-.div-app{
-    background-color: red;
+:global{
+    font-size: 32;
+
+}
+
+.div-box{
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    height: 100%;
+    justify-content:end;
+    
+
 }
 
 .footer-app{
-    background-color: royalblue;
+    width: 100%;
+    background-color: rgb(64, 96, 161); 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
+
+.form-div{
+    width: 600px;
+    height: 150px;
+}
+
+

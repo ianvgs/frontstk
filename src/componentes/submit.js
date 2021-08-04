@@ -1,8 +1,15 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { Card,CardTitle, CardText } from 'reactstrap';
+import { Button, Input,InputGroup,InputGroupAddon,InputGroupButtonDropdown,DropdownToggle,DropdownMenu,DropdownItem, Card,CardTitle, CardText } from 'reactstrap';
+import '../App.css'
+
+
 
 export default () => {
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);  
+  const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
+
   
   const [fName, setfName] = useState('');
   const [acao, setAcao] = useState('');
@@ -36,29 +43,47 @@ export default () => {
     }).catch(err => err);
        
   }
- 
+  
   
   return(
-    <>
-    <hr/>
-    <input type="text" placeholder="Name" onChange={e => setfName(e.target.value)} />    
-    <button onClick={submitValue}>Submit</button>
-    <br/>
-    
-    <Card >
+    <div className="form-div">
+
+      <InputGroup>
+        <InputGroupAddon addonType="prepend"><Button onClick={submitValue}>Consultar código</Button></InputGroupAddon>
+        <Input type="text" placeholder="Informe código da ação" onChange={e => setfName(e.target.value)}/>
+      </InputGroup>
+      <br />
+
+      <InputGroup>
         
-             
-        <CardTitle tag="h5">{cname}</CardTitle>
-        <CardText>{ceo}</CardText>
-        <CardText>{desc}</CardText>  
-        <CardText>{acao}</CardText>
-        <CardText>{cro}</CardText>         
+        <InputGroupButtonDropdown addonType="append" isOpen={dropdownOpen} toggle={toggleDropDown}>
+          <DropdownToggle caret>
+            Exemplos de códigos de ações
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem header >Aapl = Apple Inc.</DropdownItem>
+            <DropdownItem header>Bac = Bank of Catar</DropdownItem>           
+          </DropdownMenu>
+        </InputGroupButtonDropdown>
+      </InputGroup>
+      <br />    
 
-      
-    </Card>    
-   
+    
+    {acao &&  
+    <Card >  
+      <CardTitle tag="h5">{cname}</CardTitle>
+        <CardText>Ultima cotação:{acao}</CardText> 
+        <CardText>Ceo:{ceo}</CardText>
+        <CardText>Mais sobre:{desc}</CardText>
+    </Card>
+    }    
+    <Card >
+        <CardText>{cro}</CardText> 
+    </Card>
+    
 
-    </>
+
+    </div>
   )
 }
 
