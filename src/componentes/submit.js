@@ -27,8 +27,7 @@ export default () => {
     <input type="text" placeholder="Name" onChange={e => setfName(e.target.value)} />    
     <button onClick={submitValue}>Submit</button>
     <br/>
-
-    {(acao && 
+    
     <Card style={{width:600}} body outline color="secondary">
         
         <CardText>{acao.message}</CardText>
@@ -39,7 +38,7 @@ export default () => {
         <CardText>{desc.description}</CardText>
         <CardText>{desc.CEO}</CardText>
     </Card>    
-    )}   
+   
 
     </>
   )
