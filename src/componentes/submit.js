@@ -37,14 +37,11 @@ return(
         <CardText>{desc.companyName}</CardText>
         <CardText>{desc.description}</CardText>
         <CardText>{desc.CEO}</CardText>
-    </Card>
-    
-    )}
-
-    
+    </Card>    
+    )}   
 
     </>
-    )
+  )
 }
 
 /*
