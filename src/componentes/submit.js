@@ -35,7 +35,8 @@ export default () => {
   
   
   return(
-    <div >
+    <div className="form-div" >
+
       <InputGroup>
         <InputGroupAddon addonType="prepend"><Button onClick={submitValue}>Consultar código</Button></InputGroupAddon>
         <Input type="text" placeholder="Informe código da ação" onChange={e => setfName(e.target.value)}/>
@@ -59,9 +60,9 @@ export default () => {
     
     {acao &&  
     <Card >  
-      <CardTitle className="c-title">Nome:{cname}</CardTitle>
-        <CardText className="c-price">Ultima cotação:  {acao}</CardText>         
-        <CardText className="c-about">Mais sobre:{desc}</CardText>
+      <CardTitle className="c-title">Nome: {cname}</CardTitle>
+        <CardText className="c-price">Ultima cotação:  <h1 className="pricered">U${acao}</h1></CardText>         
+        <CardText className="c-about">Mais sobre: {desc}</CardText>
     </Card>
     }    
     <Card >
